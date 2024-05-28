@@ -549,15 +549,15 @@ const heroes = [ 'Batman', 'Superman', 'Mujer Maravilla', 'Aquaman' ]
 
    // For In: Recorre las propiedades enumerables de un objeto
 
-   const persona = {
-      nombre: "Juan",
-      apellido: "Perez",
-      edad: 30
-   }
+   // const persona = {
+   //    nombre: "Juan",
+   //    apellido: "Perez",
+   //    edad: 30
+   // }
 
-   for (const propiedad in persona) {
-      console.log(`${propiedad}: ${persona[propiedad]}`)
-   }
+   // for (const propiedad in persona) {
+   //    console.log(`${propiedad}: ${persona[propiedad]}`)
+   // }
 
    // nombre: Juan
    // apellido: Perez
@@ -565,11 +565,11 @@ const heroes = [ 'Batman', 'Superman', 'Mujer Maravilla', 'Aquaman' ]
 
    // For Of: Recorre los valores de un objeto iterable (como un array, string, Set o Map)
 
-   const numeros = [1, 2, 3, 4, 5]
+   // const numeros = [1, 2, 3, 4, 5]
 
-   for (const numero of numeros) {
-      console.log(numero)
-   }
+   // for (const numero of numeros) {
+   //    console.log(numero)
+   // }
 
    // 1
    // 2
