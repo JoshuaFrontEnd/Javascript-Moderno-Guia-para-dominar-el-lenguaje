@@ -1,0 +1,10 @@
+Esta sección es sumamente importante, porque explicamos cosas fundamentales para el desarrollo de aplicaciones de JavaScript moderno.
+
+Puntualmente veremos:
+
+- ¿Qué son bundlers?
+- ¿Qué es Webpack y TurboPack?
+- ¿Qué es Vite?
+- ¿Por qué queremos utilizar esas herramientas?
+
+Y luego, nos moveremos a realizar trabajo con Vite en la aplicación de BlackJack.
