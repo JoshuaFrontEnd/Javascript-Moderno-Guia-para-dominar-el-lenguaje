@@ -1,0 +1,9 @@
+Esta es una sección cargada de información para cualquier aplicación moderna de JavaScript, esto incluye:
+
+- Variables de entorno
+- Callbacks y callback hell
+- Promises y promise hell
+- Async, async - await
+- Evitar los callback o promise hells
+- Funciones generadoras
+- Funciones generadoras asíncronas
