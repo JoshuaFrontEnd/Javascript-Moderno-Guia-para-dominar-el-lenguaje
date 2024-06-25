@@ -1,12 +1,23 @@
 import modalHtml from './render-modal.html?raw';
+import { User } from '../../models/user';
+import { getUserById } from '../../use-cases/get-user-by-id';
+
 import './render-modal.css'
 
-let modal, form
+let modal, form, loadedUser = {}
 
-export const showModal = () => {
+/**
+ * @param { String|Number } id
+ */
+export const showModal = async ( id ) => {
   modal?.classList.remove('hide-modal')
+  loadedUser = {}
 
   // Cargar usuario por ID
+  if ( !id ) return
+  const user = await getUserById( id )
+  setFormValues( user )
+
 }
 
 export const hideModal = () => {
@@ -15,6 +26,20 @@ export const hideModal = () => {
 
   // Reset ("limpiar") del formulario
   form?.reset()
+
+}
+
+// Establecer los valores del formulario
+/**
+ * @param { User } user
+ */
+const setFormValues = ( user ) => {
+
+  form.querySelector( '[name="firstName"]' ).value = user.firstName
+  form.querySelector( '[name="lastName"]' ).value = user.lastName
+  form.querySelector( '[name="balance"]' ).value = user.balance
+  form.querySelector( '[name="isActive"]' ).checked = user.isActive
+  loadedUser = user
 
 }
 
@@ -43,9 +68,12 @@ export const renderModal = ( element, callback ) => {
   event.preventDefault()
 
   const formData = new FormData( form )
-  const userLike = {}
+  const userLike = { ...loadedUser }
 
   for ( const [key, value] of  formData ) {
+
+    console.log( key, value );
+
     if ( key === 'balance' ) {
       // Al usar "+value" se esta conviertiendo cualquier tipo de valor a numero es como usar "Number(value)"
       userLike[ key ] = +value

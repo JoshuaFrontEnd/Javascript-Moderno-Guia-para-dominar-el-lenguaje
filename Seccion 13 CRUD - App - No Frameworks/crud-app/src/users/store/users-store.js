@@ -1,3 +1,5 @@
+import { User } from '../models/user'
+import { loadNextId } from '../use-cases/load-next-id'
 import { loadUsersByPage } from '../use-cases/load-users-by-page'
 
 const state = {
@@ -25,15 +27,39 @@ const loadPreviousPage = async () => {
   state.users = users
 }
 
-const onUserChanged = async () => {
-  throw new Error('No implementado')
+const getNextId = async () => {
+  return await loadNextId()
+}
+
+/**
+ * @param { User } user
+ */
+const onUserChanged = async ( updatedUser ) => {
+
+  let wasFound = false
+
+  state.users = state.users.map( user => {
+    if ( user.id === updatedUser.id ) {
+      wasFound = true
+      return updatedUser
+    }
+    return user
+  })
+
+  if ( state.users.length < 10 && ! wasFound ) {
+    state.users.push( updatedUser )
+  }
+
 }
 
 const reloadPage = async () => {
-  throw new Error('No implementado')
+  const users = await loadUsersByPage( state.currentPage )
+  if ( users.length === 0 )  return
+  state.users = users
 }
 
 export default {
+  getNextId,
   loadNextPage,
   loadPreviousPage,
   onUserChanged,

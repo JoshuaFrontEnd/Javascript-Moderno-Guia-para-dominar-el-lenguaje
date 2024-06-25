@@ -4,7 +4,7 @@ import './render-add-button.css'
 /**
  * @param { HTMLDivElement } element
  */
-export const renderAppButton = ( element, callback ) => {
+export const renderAppButton = ( element ) => {
 
   const fabButton = document.createElement( 'button' )
   fabButton.innerText = '+'
